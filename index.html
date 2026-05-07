@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitazo Camisetas – Camisetas de Fútbol Premium</title>
+  <meta name="description" content="Camisetas de fútbol retro y de selecciones en versión jugador. Calidad premium con personalización. Envíos a todo el país.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --negro: #0a0a0a;
+      --negro2: #111111;
+      --gris-oscuro: #1a1a1a;
+      --gris: #2a2a2a;
+      --gris-claro: #888;
+      --verde: #4fc3f7;
+      --verde-oscuro: #0288d1;
+      --blanco: #ffffff;
+      --blanco-suave: #f0f0f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 42px;
+      width: 42px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .nav-logo span {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--blanco);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gris-claro);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--blanco); }
+
+    .nav-cta {
+      background: var(--verde);
+      color: var(--negro) !important;
+      padding: 9px 22px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      color: #000 !important;
+    }
+
+    .nav-cta:hover { background: var(--verde-oscuro) !important; color: #000 !important; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 60%, rgba(0,230,118,0.08) 0%, transparent 70%), var(--negro);
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(120px, 25vw, 320px);
+      color: rgba(255,255,255,0.025);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      letter-spacing: 10px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,230,118,0.12);
+      border: 1px solid rgba(0,230,118,0.3);
+      color: var(--verde);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--verde);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(56px, 10vw, 120px);
+      letter-spacing: 6px;
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span { color: var(--verde); }
+
+    .hero-subtitle {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--gris-claro);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--verde);
+      color: #000;
+      padding: 16px 36px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all .2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--verde-oscuro);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--blanco);
+      padding: 16px 36px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all .2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--verde);
+      color: var(--verde);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 48px;
+      color: var(--verde);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--gris-claro);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── SECCIÓN TÍTULO ─── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(36px, 5vw, 64px);
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+
+    .section-desc {
+      color: var(--gris-claro);
+      font-size: 15px;
+      max-width: 500px;
+      margin: 16px auto 0;
+      line-height: 1.7;
+    }
+
+    /* ─── CATÁLOGOS ─── */
+    section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .catalogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+      gap: 32px;
+    }
+
+    .catalog-card {
+      background: var(--gris-oscuro);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform .3s, border-color .3s;
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,230,118,0.3);
+    }
+
+    .catalog-header {
+      padding: 32px 32px 24px;
+      background: linear-gradient(135deg, rgba(0,230,118,0.08), transparent);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .catalog-tag {
+      display: inline-block;
+      background: rgba(0,230,118,0.15);
+      color: var(--verde);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .catalog-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .catalog-desc {
+      color: var(--gris-claro);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .catalog-body {
+      padding: 28px 32px;
+    }
+
+    .catalog-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .catalog-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 14px;
+      color: var(--blanco-suave);
+    }
+
+    .catalog-features li:last-child { border-bottom: none; }
+
+    .check {
+      color: var(--verde);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .catalog-count {
+      font-size: 12px;
+      color: var(--gris-claro);
+      background: rgba(255,255,255,0.05);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-left: auto;
+    }
+
+    .catalog-pdf-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(0,230,118,0.1);
+      border: 1px solid rgba(0,230,118,0.25);
+      color: var(--verde);
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 12px;
+      transition: all .2s;
+    }
+
+    .catalog-pdf-btn:hover {
+      background: rgba(0,230,118,0.18);
+      border-color: var(--verde);
+    }
+
+    .pdf-viewer {
+      display: none;
+      margin-top: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .pdf-viewer.active { display: block; }
+
+    .pdf-viewer iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    /* ─── PRECIOS ─── */
+    #precios {
+      background: var(--negro2);
+      max-width: 100%;
+      padding: 100px 40px;
+    }
+
+    #precios > * {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .precios-section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .pricing-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .price-card {
+      background: var(--gris-oscuro);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all .3s;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: var(--verde);
+      background: linear-gradient(135deg, rgba(0,230,118,0.08), var(--gris-oscuro));
+    }
+
+    .price-card.featured::before {
+      content: 'MÁS POPULAR';
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--verde);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 4px 16px;
+      border-radius: 100px;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,230,118,0.4);
+    }
+
+    .price-qty {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris-claro);
+      margin-bottom: 12px;
+    }
+
+    .price-amount {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 64px;
+      color: var(--blanco);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-amount .currency {
+      font-size: 28px;
+      color: var(--verde);
+      vertical-align: top;
+      margin-top: 12px;
+      display: inline-block;
+    }
+
+    .price-unit {
+      font-size: 12px;
+      color: var(--gris-claro);
+      margin-bottom: 24px;
+    }
+
+    .price-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 24px;
+    }
+
+    .price-features {
+      list-style: none;
+      text-align: left;
+    }
+
+    .price-features li {
+      font-size: 13px;
+      color: var(--blanco-suave);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price-features li::before {
+      content: '✓';
+      color: var(--verde);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .addon-card {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      background: var(--gris-oscuro);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .addon-icon {
+      font-size: 36px;
+    }
+
+    .addon-info { flex: 1; min-width: 200px; }
+
+    .addon-title {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .addon-desc {
+      font-size: 13px;
+      color: var(--gris-claro);
+      line-height: 1.5;
+    }
+
+    .addon-price {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px;
+      color: var(--verde);
+      white-space: nowrap;
+    }
+
+    /* ─── INSTAGRAM ─── */
+    #instagram {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .instagram-banner {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      border-radius: 20px;
+      padding: 60px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .ig-left { flex: 1; min-width: 280px; }
+
+    .ig-handle {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 56px;
+      letter-spacing: 2px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .ig-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .ig-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+
+    .ig-btn:hover { transform: scale(1.04); }
+
+    .ig-icon { font-size: 20px; }
+
+    /* ─── CONTACTO ─── */
+    #contacto {
+      background: var(--negro2);
+      max-width: 100%;
+      padding: 100px 40px;
+    }
+
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .contact-card {
+      background: var(--gris-oscuro);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-decoration: none;
+      color: var(--blanco);
+      transition: all .25s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--verde);
+    }
+
+    .contact-card-icon { font-size: 32px; }
+
+    .contact-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris-claro);
+    }
+
+    .contact-card-value {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--negro);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      letter-spacing: 4px;
+      color: var(--verde);
+      margin-bottom: 16px;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--gris-claro);
+    }
+
+    /* ─── SCROLL INDICATOR ─── */
+    .scroll-down {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--gris-claro);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      section, #precios, #instagram, #contacto { padding: 70px 20px; }
+      .catalogs-grid { grid-template-columns: 1fr; }
+      .instagram-banner { padding: 40px 28px; }
+      .ig-handle { font-size: 40px; }
+      .addon-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="kitazofoto.jpg" alt="Kitazo logo">
+      <span>Kitazo Camisetas</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#catalogos">Catálogos</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#contacto" class="nav-cta">Pedir ahora</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-bg-text">KITAZO</div>
+    <div style="position:relative; z-index:1;">
+      <img src="kitazofoto.jpg" alt="Kitazo" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid rgba(79,195,247,0.4); margin-bottom:24px; box-shadow:0 0 40px rgba(79,195,247,0.2);">
+      <div class="hero-badge">Camisetas de fútbol premium</div>
+      <h1 class="hero-title">
+        Kitazo<br><span>Camisetas</span>
+      </h1>
+      <p class="hero-subtitle">
+        Camisetas retro y de selecciones versión jugador. Calidad profesional, con personalización de nombre y número.
+      </p>
+      <div class="hero-buttons">
+        <a href="#catalogos" class="btn-primary">Ver catálogos</a>
+        <a href="#precios" class="btn-outline">Ver precios</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">67</div>
+          <div class="stat-label">Modelos disponibles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Líneas de producto</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">+</div>
+          <div class="stat-label">Personalización</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <span>↓</span>
+      <span>Ver más</span>
+    </div>
+  </div>
+
+  <!-- CATÁLOGOS -->
+  <section id="catalogos">
+    <div class="section-header">
+      <div class="section-tag">Nuestros catálogos</div>
+      <h2 class="section-title">Dos líneas premium</h2>
+      <p class="section-desc">Explorá todos los modelos disponibles. Hacé clic para ver el catálogo completo.</p>
+    </div>
+
+    <div style="
+      background: rgba(79,195,247,0.07);
+      border: 1px solid rgba(79,195,247,0.25);
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+    ">
+      <span style="font-size:22px; flex-shrink:0;">💡</span>
+      <span><strong style="color:#4fc3f7;">¿No encontrás la que buscás?</strong> Si hay alguna camiseta que no se encuentra en este catálogo y la estás buscando, no dudes en consultarnos. Seguramente la tenemos, pero aún no está publicada.</span>
+    </div>
+
+    <div class="catalogs-grid">
+
+      <!-- RETRO -->
+      <div class="catalog-card">
+        <div class="catalog-header">
+          <div class="catalog-tag">⚽ Línea Retro</div>
+          <div class="catalog-title">Camisetas Retro</div>
+          <p class="catalog-desc">Los diseños clásicos que marcaron épocas. Materiales de calidad con el look vintage que todos quieren.</p>
+        </div>
+        <div class="catalog-body">
+          <ul class="catalog-features">
+            <li>
+              <span class="check">✓</span>
+              Diseños históricos de selecciones y clubes
+              <span class="catalog-count">32 modelos</span>
+            </li>
+            <li>
+              <span class="check">✓</span>
+              Calidad fan version premium
+            </li>
+            <li>
+              <span class="check">✓</span>
+              Talles S a XXL disponibles
+            </li>
+            <li>
+              <span class="check">✓</span>
+              Personalización con nombre y número
+            </li>
+          </ul>
+          <button class="catalog-pdf-btn" onclick="togglePDF('retro-pdf', this)">
+            📄 Ver catálogo completo
+          </button>
+          <div class="pdf-viewer" id="retro-pdf">
+            <iframe src="Catalogo_Camisetas_Futbol_Retro.pdf" title="Catálogo Retro"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- SELECCIONES JUGADOR -->
+      <div class="catalog-card">
+        <div class="catalog-header">
+          <div class="catalog-tag">🏆 Versión Jugador</div>
+          <div class="catalog-title">Selecciones Jugador</div>
+          <p class="catalog-desc">Tecnología transpirable de alto rendimiento. El mismo ajuste y calidad que usan los jugadores en el campo.</p>
+        </div>
+        <div class="catalog-body">
+          <ul class="catalog-features">
+            <li>
+              <span class="check">✓</span>
+              Selecciones del mundo
+              <span class="catalog-count">35 modelos</span>
+            </li>
+            <li>
+              <span class="check">✓</span>
+              Materiales de alto rendimiento transpirables
+            </li>
+            <li>
+              <span class="check">✓</span>
+              Ajuste profesional versión jugador
+            </li>
+            <li>
+              <span class="check">✓</span>
+              Parches oficiales disponibles
+            </li>
+          </ul>
+          <button class="catalog-pdf-btn" onclick="togglePDF('jugador-pdf', this)">
+            📄 Ver catálogo completo
+          </button>
+          <div class="pdf-viewer" id="jugador-pdf">
+            <iframe src="Catalogo_Camisetas_Futbol_Selecciones_Version_Jugador_.pdf" title="Catálogo Selecciones Jugador"></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <div id="precios">
+    <div class="precios-section-header">
+      <div class="section-tag">Precios y promociones</div>
+      <h2 class="section-title">Más llevás, más ahorrás</h2>
+      <p class="section-desc">Aplica para todas las líneas. Los precios mejoran cuantas más camisetas pedís.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-qty">1 camiseta</div>
+        <div class="price-amount"><span class="currency">$</span>2490</div>
+        <div class="price-unit">por unidad</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Cualquier modelo disponible</li>
+          <li>Todas las líneas incluidas</li>
+          <li>Talles S al XXL</li>
+        </ul>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-qty">2 camisetas</div>
+        <div class="price-amount"><span class="currency">$</span>4500</div>
+        <div class="price-unit">$2250 c/u — ahorrás $480</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Podés mezclar líneas</li>
+          <li>Distintos talles y modelos</li>
+          <li>Personalización disponible</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <div class="price-qty">3 camisetas</div>
+        <div class="price-amount"><span class="currency">$</span>6300</div>
+        <div class="price-unit">$2100 c/u — ahorrás $1170</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Mejor precio por unidad</li>
+          <li>Ideal para regalos o amigos</li>
+          <li>Podés combinar cualquier modelo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-icon">✍️</div>
+      <div class="addon-info">
+        <div class="addon-title">Personalización con nombre y número</div>
+        <div class="addon-desc">Agregale tu nombre, apodo o el nombre de tu jugador favorito con el número que quieras. Disponible en todas las camisetas.</div>
+      </div>
+      <div class="addon-price">+$350</div>
+    </div>
+
+    <div class="addon-card" style="margin-top:16px;">
+      <div class="addon-icon">🏅</div>
+      <div class="addon-info">
+        <div class="addon-title">Parches oficiales</div>
+        <div class="addon-desc">Champions League, Copa del Mundo, Copa América y más. Agregá parches oficiales a tu camiseta versión jugador.</div>
+      </div>
+      <div class="addon-price" style="font-size:24px; font-family:'Inter'; color: var(--gris-claro);">A consultar</div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram">
+    <div class="instagram-banner">
+      <div class="ig-left">
+        <div class="ig-handle">@kitazocamisetas</div>
+        <p class="ig-desc">Seguinos en Instagram para ver los últimos modelos, novedades y promociones exclusivas. Todos los días nuevo contenido.</p>
+        <a href="https://www.instagram.com/kitazocamisetas/" target="_blank" class="ig-btn">
+          <span class="ig-icon">📸</span>
+          Ver Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <div id="contacto">
+    <div class="contact-inner">
+      <div class="section-tag">Contacto</div>
+      <h2 class="section-title">¿Listo para pedir?</h2>
+      <p class="section-desc" style="margin-top:16px;">Escribinos por cualquiera de estos canales. Respondemos rápido.</p>
+      <div class="contact-cards">
+        <a href="https://www.instagram.com/kitazocamisetas/" target="_blank" class="contact-card">
+          <div class="contact-card-icon">📸</div>
+          <div class="contact-card-label">Instagram</div>
+          <div class="contact-card-value">@kitazocamisetas</div>
+        </a>
+        <a href="https://wa.me/message/SNWMMRR3DTAVD1" target="_blank" class="contact-card">
+          <div class="contact-card-icon">💬</div>
+          <div class="contact-card-label">WhatsApp</div>
+          <div class="contact-card-value">Escribinos ahora</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/message/SNWMMRR3DTAVD1" target="_blank" style="
+    position: fixed;
+    bottom: 28px; right: 28px;
+    background: #25D366;
+    color: #fff;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+    z-index: 999;
+    text-decoration: none;
+    transition: transform .2s;
+  " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="kitazofoto.jpg" alt="Kitazo" style="width:60px; height:60px; border-radius:50%; object-fit:cover; margin-bottom:12px; border:2px solid rgba(79,195,247,0.3);">
+    <div class="footer-logo">Kitazo Camisetas</div>
+    <p class="footer-text">© 2026 Kitazo Camisetas · Instagram: @kitazocamisetas</p>
+  </footer>
+
+  <script>
+    function togglePDF(id, btn) {
+      const viewer = document.getElementById(id);
+      const isOpen = viewer.classList.toggle('active');
+      btn.textContent = isOpen ? '✖ Cerrar catálogo' : '📄 Ver catálogo completo';
+    }
+
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? '#fff' : '';
+      });
+    });
+  </script>
+
+</body>
+</html>
