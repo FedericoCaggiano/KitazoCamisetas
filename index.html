@@ -1263,6 +1263,487 @@
       footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
       .ig-banner { padding: 32px; }
     }
+
+    /* ══════════════════════════════════════
+       TIENDA — Grilla de productos
+    ══════════════════════════════════════ */
+    #tienda { background: var(--bg); }
+
+    .tienda-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+      font-family: var(--font-body);
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+
+    .search-sort-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 16px 12px 42px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input::placeholder { color: var(--text-dim); }
+    .search-input:focus { border-color: var(--border-accent); }
+
+    .sort-select {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 12px 36px 12px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .sort-select:focus { border-color: var(--border-accent); }
+    .sort-select option { background: #161616; }
+
+    .results-counter {
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .results-counter strong { color: var(--text); font-weight: 600; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 28px;
+      min-height: 200px;
+    }
+
+    .product-card {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.25s var(--ease), transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-card.visible:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-accent);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+
+    .card-img {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+    }
+
+    .card-img-bg { position: absolute; inset: 0; }
+
+    .card-flag {
+      font-size: 80px;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+      transition: transform 0.35s var(--ease);
+      line-height: 1;
+    }
+
+    .product-card.visible:hover .card-flag {
+      transform: scale(1.15) rotate(-4deg);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      z-index: 10;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .badge-jugador   { background: #4fc3f7; color: #000; }
+    .badge-retro     { background: #f59e0b; color: #000; }
+    .badge-seleccion { background: #a78bfa; color: #fff; }
+    .badge-oasis     { background: rgba(255,255,255,0.92); color: #000; }
+
+    .card-brand {
+      position: absolute;
+      top: 12px; right: 12px;
+      z-index: 10;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      padding: 20px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-nombre {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 2px;
+    }
+
+    .card-season {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .card-price {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .card-price-label {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .card-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #25D366;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      white-space: nowrap;
+      font-family: var(--font-body);
+      flex-shrink: 0;
+    }
+
+    .card-wa-btn:hover {
+      background: #1fba59;
+      transform: scale(1.05);
+    }
+
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .no-results-icon { font-size: 56px; margin-bottom: 16px; }
+
+    .no-results-title {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .no-results-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .results-counter { margin-left: 0; width: 100%; text-align: center; }
+    }
+
+    @media (max-width: 640px) {
+      .tienda-inner { padding: 80px 20px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .card-nombre { font-size: 22px; }
+      .card-price { font-size: 26px; }
+      .card-flag { font-size: 56px; }
+      .card-wa-btn { padding: 8px 12px; font-size: 9px; }
+      .search-sort-row { flex-direction: column; align-items: stretch; }
+      .sort-select { width: 100%; }
+    }
+
+    /* ── IMAGEN REAL DE PRODUCTO ── */
+    .card-product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .product-card.visible:hover .card-product-img {
+      transform: scale(1.05);
+    }
+
+    /* ── SLIDER MULTI-FOTO ── */
+    .card-slider { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card-slides { display: flex; height: 100%; transition: transform 0.35s var(--ease); will-change: transform; }
+    .card-slide  { flex: 0 0 100%; height: 100%; }
+    .card-slide img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s var(--ease); }
+    .product-card.visible:hover .card-slide img { transform: scale(1.05); }
+    .slider-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.18); color: #fff;
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; transition: opacity 0.2s, background 0.2s;
+      padding: 0;
+    }
+    .slider-arrow:hover { background: rgba(0,0,0,0.85); }
+    .slider-arrow svg  { width: 13px; height: 13px; pointer-events: none; }
+    .product-card:hover .slider-arrow { opacity: 1; }
+    .slider-arrow.prev { left: 8px; }
+    .slider-arrow.next { right: 8px; }
+    .slider-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 5; }
+    .slider-dot  { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: background 0.2s, transform 0.2s; cursor: pointer; }
+    .slider-dot.active { background: #fff; transform: scale(1.35); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.94); backdrop-filter: blur(14px);
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; animation: lbFadeIn 0.2s var(--ease); }
+    @keyframes lbFadeIn { from { opacity:0 } to { opacity:1 } }
+    .lightbox-img {
+      max-width: min(88vw, 680px);
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      cursor: default;
+      user-select: none;
+    }
+    .lb-close {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; width: 42px; height: 42px; border-radius: 50%;
+      font-size: 20px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.18); }
+    .lb-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; width: 50px; height: 50px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s; flex-shrink: 0;
+    }
+    .lb-arrow:hover { background: rgba(255,255,255,0.2); }
+    .lb-arrow svg  { width: 20px; height: 20px; pointer-events: none; }
+    .lb-arrow.prev { left: 20px; }
+    .lb-arrow.next { right: 20px; }
+    .lb-arrow[hidden] { display: none; }
+    .lb-counter {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.5); font-family: var(--font-body);
+      font-size: 13px; letter-spacing: 1px; white-space: nowrap;
+    }
+
+    /* ── TALLES STRIP ── */
+    .talles-strip {
+      margin-top: 28px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .talles-left { flex-shrink: 0; }
+
+    .talles-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .talles-sub {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .talles-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .talle-tag {
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 900;
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 1px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .talle-tag:hover {
+      background: rgba(79,195,247,0.22);
+      transform: translateY(-3px);
+    }
+
+    .talles-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      flex: 1;
+      min-width: 180px;
+      line-height: 1.7;
+    }
+
+    .talles-note strong { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .talles-strip { padding: 20px; gap: 16px; }
+      .talle-tag { width: 44px; height: 44px; font-size: 17px; }
+    }
   </style>
 </head>
 <body>
@@ -1275,6 +1756,7 @@
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#catalogos">Catálogos</a></li>
+      <li><a href="#tienda">Tienda</a></li>
       <li><a href="#precios">Precios</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#como-funciona">Cómo funciona</a></li>
@@ -1287,6 +1769,7 @@
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menú de navegación">
     <button class="mobile-close" id="menuClose" aria-label="Cerrar menú">&#10005;</button>
     <a href="#catalogos" onclick="closeMobileMenu()">Catálogos</a>
+    <a href="#tienda" onclick="closeMobileMenu()">Tienda</a>
     <a href="#precios" onclick="closeMobileMenu()">Precios</a>
     <a href="#como-funciona" onclick="closeMobileMenu()">Cómo funciona</a>
     <a href="https://wa.me/message/SNWMMRR3DTAVD1" target="_blank" rel="noopener" style="color:var(--accent)">Pedir ahora</a>
@@ -1430,13 +1913,10 @@
               <li>Talles S a XXL disponibles</li>
               <li>Personalización con nombre y número</li>
             </ul>
-            <button class="catalog-toggle-btn" onclick="togglePDF('pdf-retro', this)" aria-expanded="false">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Ver catálogo completo
-            </button>
-            <div class="pdf-embed" id="pdf-retro">
-              <iframe src="Catalogo_Camisetas_Futbol_Retro.pdf" title="Catálogo Camisetas Retro" loading="lazy"></iframe>
-            </div>
+            <a href="#tienda" class="catalog-toggle-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Ver tienda online
+            </a>
           </div>
           <div class="bento-count" aria-hidden="true">32</div>
         </div>
@@ -1455,13 +1935,10 @@
               <li>Ajuste profesional versión jugador</li>
               <li>Parches oficiales disponibles</li>
             </ul>
-            <button class="catalog-toggle-btn" onclick="togglePDF('pdf-jugador', this)" aria-expanded="false">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Ver catálogo completo
-            </button>
-            <div class="pdf-embed" id="pdf-jugador">
-              <iframe src="Catalogo_Camisetas_Futbol_Selecciones_Version_Jugador_.pdf" title="Catálogo Selecciones Versión Jugador" loading="lazy"></iframe>
-            </div>
+            <a href="#tienda" class="catalog-toggle-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Ver tienda online
+            </a>
           </div>
           <div class="bento-count" aria-hidden="true">35</div>
         </div>
@@ -1476,6 +1953,67 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Talles -->
+      <div class="talles-strip reveal">
+        <div class="talles-left">
+          <div class="talles-label">Talles disponibles</div>
+          <div class="talles-sub">Ambas líneas</div>
+        </div>
+        <div class="talles-row">
+          <div class="talle-tag">S</div>
+          <div class="talle-tag">M</div>
+          <div class="talle-tag">L</div>
+          <div class="talle-tag">XL</div>
+          <div class="talle-tag">XXL</div>
+        </div>
+        <p class="talles-note">
+          <strong>Personalización disponible</strong> en todos los modelos: nombre, número y parches oficiales (+$350). Si necesitás un talle especial, consultanos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── TIENDA ── -->
+    <section id="tienda">
+      <div class="tienda-inner">
+        <p class="section-tag">Tienda online</p>
+        <h2 class="section-title">ENCONTRÁ<br>TU CAMISETA.</h2>
+
+        <div class="filter-bar" id="filterBar" role="group" aria-label="Filtrar por categoría">
+          <button class="filter-btn active" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="filter-btn" data-filter="jugador" aria-pressed="false">Versión Jugador</button>
+          <button class="filter-btn" data-filter="retro" aria-pressed="false">Retros</button>
+          <button class="filter-btn" data-filter="seleccion" aria-pressed="false">Selecciones</button>
+          <button class="filter-btn" data-filter="adidas" aria-pressed="false">Adidas</button>
+          <button class="filter-btn" data-filter="nike" aria-pressed="false">Nike</button>
+          <button class="filter-btn" data-filter="oasis" aria-pressed="false">Oasis</button>
+          <button class="filter-btn" data-filter="clubes" aria-pressed="false">Clubes</button>
+        </div>
+
+        <div class="search-sort-row">
+          <div class="search-wrap">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" class="search-input" id="searchInput" placeholder="Buscar camiseta..." aria-label="Buscar camiseta">
+          </div>
+          <select class="sort-select" id="sortSelect" aria-label="Ordenar productos">
+            <option value="popular">Más populares</option>
+            <option value="nuevos">Más nuevos</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+          </select>
+          <p class="results-counter" aria-live="polite">
+            Mostrando <strong id="visibleCount">0</strong> de <strong id="totalCount">24</strong> productos
+          </p>
+        </div>
+
+        <div class="product-grid" id="productGrid" role="list" aria-label="Productos"></div>
+
+        <div class="no-results" id="noResults" aria-live="polite">
+          <div class="no-results-icon">🔍</div>
+          <div class="no-results-title">Sin resultados</div>
+          <p class="no-results-desc">No encontramos camisetas con esa búsqueda.<br>Probá con otro término o categoría.</p>
+        </div>
       </div>
     </section>
 
@@ -1780,6 +2318,319 @@
       hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
+
+    /* ══════════════════════════════════════
+       TIENDA — Filtros y grilla de productos
+    ══════════════════════════════════════ */
+    (function () {
+      const WA = 'https://wa.me/message/SNWMMRR3DTAVD1';
+
+      const PRODUCTS = [
+        /* ── Selecciones Versión Jugador ──────────────────────────────── */
+        { id:1,  nombre:'Francia',      sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','nike'],   pop:true,  flag:'🇫🇷', grad:'linear-gradient(135deg,#a8edea,#fed6e3)',  img:'assets/selecciones/francia-away.jpg' },
+        { id:2,  nombre:'Uruguay',      sub:'Home — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','nike'],   pop:true,  flag:'🇺🇾', grad:'linear-gradient(135deg,#74b9ff,#0984e3)',  img:'assets/selecciones/uruguay.jpg' },
+        { id:3,  nombre:'Jamaica',      sub:'Versión Jugador',         year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇯🇲', grad:'linear-gradient(135deg,#f9ca24,#111)',     img:'assets/selecciones/jamaica.jpg' },
+        { id:4,  nombre:'Brasil',       sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','nike'],   pop:true,  flag:'🇧🇷', grad:'linear-gradient(135deg,#0c2461,#1e3799)',  img:'assets/selecciones/brasil-away.jpg' },
+        { id:5,  nombre:'Holanda',      sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','nike'],   pop:false, flag:'🇳🇱', grad:'linear-gradient(135deg,#e17055,#fff)',     img:'assets/selecciones/holanda.jpg' },
+        { id:6,  nombre:'Inglaterra',   sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','nike'],   pop:false, flag:'🇬🇧', grad:'linear-gradient(135deg,#c0392b,#1a1a2e)',  img:'assets/selecciones/inglaterra-away.jpg' },
+        { id:7,  nombre:'Argelia',      sub:'Home — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇩🇿', grad:'linear-gradient(135deg,#f0f0f0,#27ae60)',  img:'assets/selecciones/argelia.jpg' },
+        { id:8,  nombre:'Bélgica',      sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇧🇪', grad:'linear-gradient(135deg,#2c3e50,#e74c3c)',  img:'assets/selecciones/belgica-away.jpg' },
+        { id:9,  nombre:'Colombia',     sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:true,  flag:'🇨🇴', grad:'linear-gradient(135deg,#0984e3,#f9ca24)',  img:'assets/selecciones/colombia-away.jpg' },
+        { id:10, nombre:'Colombia',     sub:'Special Edition',         year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇨🇴', grad:'linear-gradient(135deg,#0984e3,#f9ca24)',  img:'assets/selecciones/colombia-special.jpg' },
+        { id:11, nombre:'Argentina',    sub:'Special Edition',         year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:true,  flag:'🇦🇷', grad:'linear-gradient(135deg,#1a1a2e,#4fc3f7)',  img:'assets/selecciones/argentina-special.jpg' },
+        { id:12, nombre:'Bélgica',      sub:'Home — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇧🇪', grad:'linear-gradient(135deg,#e74c3c,#c0392b)',  img:'assets/selecciones/belgica-home.jpg' },
+        { id:13, nombre:'Inglaterra',   sub:'Home — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','nike'],   pop:false, flag:'🇬🇧', grad:'linear-gradient(135deg,#f0f0f0,#e0e0e0)',  img:'assets/selecciones/inglaterra-home.jpg' },
+        { id:14, nombre:'Italia',       sub:'Home — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:true,  flag:'🇮🇹', grad:'linear-gradient(135deg,#003399,#0057b7)',  img:'assets/selecciones/italia.jpg' },
+        { id:15, nombre:'Alemania',     sub:'Home — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇩🇪', grad:'linear-gradient(135deg,#dfe6e9,#b2bec3)',  img:'assets/selecciones/alemania-home.jpg' },
+        { id:16, nombre:'México',       sub:'Home — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇲🇽', grad:'linear-gradient(135deg,#00623d,#006847)',  img:'assets/selecciones/mexico.jpg' },
+        { id:17, nombre:'Corea del Sur',sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','nike'],   pop:false, flag:'🇰🇷', grad:'linear-gradient(135deg,#a29bfe,#6c5ce7)',  img:'assets/selecciones/corea.jpg' },
+        { id:18, nombre:'Ghana',        sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion'],         pop:false, flag:'🇬🇭', grad:'linear-gradient(135deg,#f9ca24,#e17055)',  img:'assets/selecciones/ghana.jpg' },
+        { id:19, nombre:'Argelia',      sub:'Away — Versión Jugador',  year:'2024', price:2490, cats:['jugador','seleccion','adidas'], pop:false, flag:'🇩🇿', grad:'linear-gradient(135deg,#27ae60,#00623d)',  img:'assets/selecciones/argelia-away.jpg' },
+        /* ── Retros ────────────────────────────────────────────────────── */
+        { id:20, nombre:'Alemania',     sub:"Retro Climacool '14",     year:'2014', price:2490, cats:['retro','seleccion','adidas'],   pop:false, flag:'🇩🇪', grad:'linear-gradient(135deg,#1a1a2e,#c0392b)',  img:'assets/selecciones/alemania-retro.jpg' },
+        /* ── Clubes Europa ─────────────────────────────────────────────── */
+        { id:24, nombre:'Barcelona',    sub:'Home — Versión Jugador',  year:'2026', price:2490, cats:['jugador','clubes','nike'],      pop:true,  flag:'🔵🔴', grad:'linear-gradient(135deg,#a50044,#004d98)', img:'assets/clubes/barcelona-home.png' },
+        { id:25, nombre:'Barcelona',    sub:'Away — Versión Jugador',  year:'2026', price:2490, cats:['jugador','clubes','nike'],      pop:false, flag:'🔵🔴', grad:'linear-gradient(135deg,#c8a96e,#2c2c2c)', img:'assets/clubes/barcelona-away.png' },
+        { id:26, nombre:'Barcelona',    sub:'Third — Versión Jugador', year:'2026', price:2490, cats:['jugador','clubes','nike'],      pop:false, flag:'🔵🔴', grad:'linear-gradient(135deg,#e84545,#c0392b)', img:'assets/clubes/barcelona-third.png' },
+        /* ── Retros nuevos ─────────────────────────────────────────────── */
+        { id:27, nombre:'Manchester United', sub:"Retro AIG '07-08 — Manga Larga", year:'2007', price:2750, cats:['retro','nike'],   pop:false, flag:'🔴', grad:'linear-gradient(135deg,#c0392b,#922b21)', imgs:['assets/retro/man-utd-07-08-ml.jpg'] },
+        { id:28, nombre:'Manchester United', sub:"Retro AIG '06-07 — Manga Larga", year:'2006', price:2750, cats:['retro','nike'],   pop:false, flag:'🔴', grad:'linear-gradient(135deg,#c0392b,#7b241c)', imgs:['assets/retro/man-utd-06-07-ml.jpg'] },
+        { id:29, nombre:'Newcastle United',  sub:"Retro '95 — Manga Larga",        year:'1995', price:2750, cats:['retro','adidas'],pop:false, flag:'⬛', grad:'linear-gradient(135deg,#111,#ddd)',       imgs:['assets/retro/newcastle-retro-ml.jpg'] },
+        /* ── Adidas × Oasis ────────────────────────────────────────────── */
+        { id:30, nombre:'Oasis', sub:'Negro Polo — Manga Corta',          year:'2025', price:2490, cats:['oasis','adidas'], pop:true,  flag:'⚫', grad:'linear-gradient(135deg,#111,#333)',          imgs:['assets/oasis/negro-polo-mc-frente.jpg','assets/oasis/negro-polo-mc-frente2.jpg','assets/oasis/negro-polo-mc-dorso.jpg'] },
+        { id:31, nombre:'Oasis', sub:'Verde Polo — Manga Larga',          year:'2025', price:2750, cats:['oasis','adidas'], pop:true,  flag:'🟢', grad:'linear-gradient(135deg,#1a7a4a,#0d5c36)',   imgs:['assets/oasis/verde-polo-ml-frente.jpg','assets/oasis/verde-polo-ml-dorso.jpg'] },
+        { id:32, nombre:'Oasis', sub:'Celeste Polo — Manga Corta',        year:'2025', price:2490, cats:['oasis','adidas'], pop:false, flag:'🩵', grad:'linear-gradient(135deg,#a8d8ea,#7ec8e3)',   imgs:['assets/oasis/celeste-mc-frente.jpg','assets/oasis/celeste-mc-frente2.jpg','assets/oasis/celeste-mc-dorso.jpg'] },
+        { id:33, nombre:'British & Irish Lions', sub:'Canterbury — Manga Larga', year:'2025', price:2750, cats:['adidas'], pop:false, flag:'🦁', grad:'linear-gradient(135deg,#c0392b,#922b21)', imgs:['assets/oasis/british-lions-frente.jpg'] },
+        { id:34, nombre:'Oasis', sub:'Negro Polo — Manga Larga',          year:'2025', price:2750, cats:['oasis','adidas'], pop:false, flag:'⚫', grad:'linear-gradient(135deg,#1a1a1a,#444)',       imgs:['assets/oasis/negro-polo-ml-frente.jpg','assets/oasis/negro-polo-ml-dorso.jpg'] },
+        { id:35, nombre:'Oasis', sub:'Azul Marino Polo — Manga Corta',    year:'2025', price:2490, cats:['oasis','adidas'], pop:false, flag:'🔵', grad:'linear-gradient(135deg,#1a237e,#283593)',   imgs:['assets/oasis/azul-mc-frente.jpg','assets/oasis/azul-mc-dorso.jpg'] },
+        { id:36, nombre:'Oasis', sub:'Blanco/Verde Polo — Manga Corta',   year:'2025', price:2490, cats:['oasis','adidas'], pop:false, flag:'⚪', grad:'linear-gradient(135deg,#f0f0f0,#27ae60)',   imgs:['assets/oasis/blanco-verde-mc-frente.jpg','assets/oasis/blanco-verde-mc-frente2.jpg','assets/oasis/blanco-verde-mc-dorso.jpg'] },
+        { id:37, nombre:'Oasis', sub:'Blanco/Negro Polo — Manga Corta',   year:'2025', price:2490, cats:['oasis','adidas'], pop:false, flag:'⚪', grad:'linear-gradient(135deg,#f0f0f0,#111)',       imgs:['assets/oasis/blanco-negro-mc-frente.jpg','assets/oasis/blanco-negro-mc-dorso.jpg'] },
+        { id:38, nombre:'Oasis', sub:'Blanco T-Shirt — Manga Corta',      year:'2025', price:2490, cats:['oasis','adidas'], pop:false, flag:'⚪', grad:'linear-gradient(135deg,#f5f5f5,#e0e0e0)',   imgs:['assets/oasis/blanco-tshirt-mc-frente.jpg','assets/oasis/blanco-tshirt-mc-dorso.jpg'] },
+        { id:39, nombre:'Oasis', sub:'Negro T-Shirt — Manga Larga',       year:'2025', price:2750, cats:['oasis','adidas'], pop:false, flag:'⚫', grad:'linear-gradient(135deg,#111,#333)',          imgs:['assets/oasis/negro-tshirt-ml-frente.jpg','assets/oasis/negro-tshirt-ml-dorso.jpg'] },
+        { id:40, nombre:'Oasis', sub:'Crema/Negro Raglan — Manga Larga',  year:'2025', price:2750, cats:['oasis','adidas'], pop:true,  flag:'🤍', grad:'linear-gradient(135deg,#f5f0e8,#111)',       imgs:['assets/oasis/crema-raglan-ml-frente.jpg','assets/oasis/crema-raglan-ml-dorso.jpg'] },
+        { id:41, nombre:'Oasis', sub:'Negro/Amarillo Neon — Manga Corta', year:'2025', price:2490, cats:['oasis','adidas'], pop:true,  flag:'💛', grad:'linear-gradient(135deg,#111,#ccff00)',       imgs:['assets/oasis/negro-neon-mc-frente.jpg','assets/oasis/negro-neon-mc-dorso.jpg'] },
+      ];
+
+      const WA_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+
+      function getBadge(cats) {
+        if (cats.includes('jugador')) return ['badge-jugador', 'Jugador'];
+        if (cats.includes('retro'))   return ['badge-retro',   'Retro'];
+        if (cats.includes('oasis'))   return ['badge-oasis',   'Oasis'];
+        return ['badge-seleccion', 'Selección'];
+      }
+
+      function getBrand(cats) {
+        if (cats.includes('adidas')) return 'Adidas';
+        if (cats.includes('nike'))   return 'Nike';
+        if (cats.includes('oasis'))  return 'Oasis';
+        return '';
+      }
+
+      function buildCard(p) {
+        const [badgeCls, badgeLbl] = getBadge(p.cats);
+        const brand = getBrand(p.cats);
+
+        // Support both legacy `img` string and new `imgs` array
+        const imgs = p.imgs ? p.imgs : (p.img ? [p.img] : []);
+
+        let mediaHtml;
+        if (imgs.length > 1) {
+          const slides = imgs.map(src =>
+            `<div class="card-slide"><img src="${src}" alt="${p.nombre}" loading="lazy"></div>`
+          ).join('');
+          const dots = imgs.map((_, i) =>
+            `<span class="slider-dot${i === 0 ? ' active' : ''}" data-idx="${i}"></span>`
+          ).join('');
+          mediaHtml = `<div class="card-slider" data-idx="0">
+  <div class="card-slides">${slides}</div>
+  <button class="slider-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button class="slider-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <div class="slider-dots">${dots}</div>
+</div>`;
+        } else if (imgs.length === 1) {
+          mediaHtml = `<img src="${imgs[0]}" alt="${p.nombre} ${p.sub}" class="card-product-img" loading="lazy">`;
+        } else {
+          mediaHtml = `<div class="card-img-bg" style="background:${p.grad}"></div><div class="card-flag">${p.flag}</div>`;
+        }
+
+        return `<div class="product-card" role="listitem">
+  <div class="card-img">
+    ${mediaHtml}
+    <div class="card-badge ${badgeCls}">${badgeLbl}</div>
+    ${brand ? `<div class="card-brand">${brand}</div>` : ''}
+  </div>
+  <div class="card-body">
+    <div class="card-nombre">${p.nombre}</div>
+    <div class="card-sub">${p.sub}</div>
+    <div class="card-season">${p.year}</div>
+    <div class="card-footer">
+      <div>
+        <div class="card-price">$${p.price.toLocaleString('es-AR')}</div>
+        <div class="card-price-label">por unidad</div>
+      </div>
+      <a href="${WA}" target="_blank" rel="noopener" class="card-wa-btn" aria-label="Consultar ${p.nombre} por WhatsApp">
+        ${WA_SVG} Consultar
+      </a>
+    </div>
+  </div>
+</div>`;
+      }
+
+      let activeFilter = 'todos';
+      let activeSearch = '';
+      let activeSort   = 'popular';
+
+      const grid     = document.getElementById('productGrid');
+      const noRes    = document.getElementById('noResults');
+      const cntVis   = document.getElementById('visibleCount');
+      const cntTotal = document.getElementById('totalCount');
+
+      cntTotal.textContent = PRODUCTS.length;
+
+      function getFiltered() {
+        return PRODUCTS
+          .filter(p => {
+            const fOk = activeFilter === 'todos' || p.cats.includes(activeFilter);
+            const sOk = !activeSearch ||
+              p.nombre.toLowerCase().includes(activeSearch) ||
+              p.sub.toLowerCase().includes(activeSearch) ||
+              p.year.includes(activeSearch);
+            return fOk && sOk;
+          })
+          .sort((a, b) => {
+            switch (activeSort) {
+              case 'popular':    return (b.pop ? 1 : 0) - (a.pop ? 1 : 0);
+              case 'nuevos':     return parseInt(b.year) - parseInt(a.year);
+              case 'precio-asc': return a.price - b.price;
+              case 'precio-desc':return b.price - a.price;
+              default: return 0;
+            }
+          });
+      }
+
+      function paint(list) {
+        grid.innerHTML = list.map(buildCard).join('');
+        grid.querySelectorAll('.product-card').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 40);
+        });
+      }
+
+      function render() {
+        const list = getFiltered();
+        cntVis.textContent = list.length;
+        noRes.style.display = list.length ? 'none' : 'block';
+
+        const prev = [...grid.querySelectorAll('.product-card')];
+        if (prev.length) {
+          prev.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(10px)'; });
+          setTimeout(() => paint(list), 220);
+        } else {
+          paint(list);
+        }
+      }
+
+      document.getElementById('filterBar').addEventListener('click', e => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        activeFilter = btn.dataset.filter;
+        render();
+      });
+
+      document.getElementById('searchInput').addEventListener('input', e => {
+        activeSearch = e.target.value.toLowerCase().trim();
+        render();
+      });
+
+      document.getElementById('sortSelect').addEventListener('change', e => {
+        activeSort = e.target.value;
+        render();
+      });
+
+      render();
+
+      // ── Slider navigation ──────────────────────────────────────────
+      function moveSlider(slider, dir) {
+        const slides = slider.querySelectorAll('.card-slide');
+        const dots   = slider.querySelectorAll('.slider-dot');
+        let idx = (parseInt(slider.dataset.idx) + dir + slides.length) % slides.length;
+        slider.dataset.idx = idx;
+        slider.querySelector('.card-slides').style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+
+      grid.addEventListener('click', e => {
+        const arrow = e.target.closest('.slider-arrow');
+        if (arrow) {
+          e.preventDefault();
+          moveSlider(arrow.closest('.card-slider'), arrow.classList.contains('next') ? 1 : -1);
+          return;
+        }
+        const dot = e.target.closest('.slider-dot');
+        if (dot) {
+          e.preventDefault();
+          const slider = dot.closest('.card-slider');
+          const idx    = parseInt(dot.dataset.idx);
+          slider.dataset.idx = idx;
+          slider.querySelector('.card-slides').style.transform = `translateX(-${idx * 100}%)`;
+          slider.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+      });
+
+      // Touch/swipe
+      let _touchX = null;
+      grid.addEventListener('touchstart', e => {
+        if (e.target.closest('.card-slider')) _touchX = e.touches[0].clientX;
+      }, { passive: true });
+      grid.addEventListener('touchend', e => {
+        if (_touchX === null) return;
+        const slider = e.target.closest('.card-slider');
+        if (slider) {
+          const dx = e.changedTouches[0].clientX - _touchX;
+          if (Math.abs(dx) > 40) moveSlider(slider, dx < 0 ? 1 : -1);
+        }
+        _touchX = null;
+      }, { passive: true });
+
+    })();
+  </script>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+    <button class="lb-close" id="lbClose" aria-label="Cerrar">✕</button>
+    <button class="lb-arrow prev" id="lbPrev" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img class="lightbox-img" id="lbImg" alt="Vista completa">
+    <button class="lb-arrow next" id="lbNext" aria-label="Siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <span class="lb-counter" id="lbCounter"></span>
+  </div>
+
+  <script>
+    /* ── Lightbox ──────────────────────────────────────────────────── */
+    (function () {
+      const lb     = document.getElementById('lightbox');
+      const lbImg  = document.getElementById('lbImg');
+      const lbPrev = document.getElementById('lbPrev');
+      const lbNext = document.getElementById('lbNext');
+      const lbCtr  = document.getElementById('lbCounter');
+      let imgs = [], cur = 0;
+
+      function open(srcs, idx) {
+        imgs = srcs; cur = idx;
+        show();
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }
+      function show() {
+        lbImg.src = imgs[cur];
+        const multi = imgs.length > 1;
+        lbPrev.hidden = !multi;
+        lbNext.hidden = !multi;
+        lbCtr.textContent = multi ? `${cur + 1} / ${imgs.length}` : '';
+      }
+      function step(d) { cur = (cur + d + imgs.length) % imgs.length; show(); }
+
+      document.getElementById('lbClose').addEventListener('click', close);
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      lbPrev.addEventListener('click', () => step(-1));
+      lbNext.addEventListener('click', () => step(1));
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape')     close();
+        if (e.key === 'ArrowLeft')   step(-1);
+        if (e.key === 'ArrowRight')  step(1);
+      });
+
+      /* Abrir al hacer click en cualquier foto de tarjeta */
+      document.getElementById('productGrid').addEventListener('click', e => {
+        if (e.target.closest('.slider-arrow') || e.target.closest('.slider-dot') ||
+            e.target.closest('.card-wa-btn'))  return;
+        const cardImg = e.target.closest('.card-img');
+        if (!cardImg) return;
+
+        const slider = cardImg.querySelector('.card-slider');
+        if (slider) {
+          const srcs   = [...slider.querySelectorAll('.card-slide img')].map(i => i.src);
+          const startI = parseInt(slider.dataset.idx) || 0;
+          open(srcs, startI);
+        } else {
+          const img = cardImg.querySelector('.card-product-img');
+          if (img) open([img.src], 0);
+        }
+      });
+    })();
   </script>
 
 </body>
