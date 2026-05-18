@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Kitazo Camisetas — Camisetas de Fútbol Premium</title>
   <meta name="description" content="99 modelos de camisetas de fútbol retro y selecciones versión jugador. Calidad de jugador, precio accesible, con personalización.">
   <meta property="og:title" content="Kitazo Camisetas">
@@ -85,15 +85,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 48px;
+      padding: calc(20px + env(safe-area-inset-top)) 48px 20px;
       transition: padding 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s var(--ease);
       border-bottom: 1px solid transparent;
     }
 
     #nav.scrolled {
-      padding: 14px 48px;
-      background: rgba(8,8,8,0.88);
+      padding: calc(14px + env(safe-area-inset-top)) 48px 14px;
+      background: rgba(8,8,8,0.92);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom-color: var(--border);
     }
 
@@ -206,7 +207,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 120px 48px 80px;
+      padding: calc(120px + env(safe-area-inset-top)) 48px 80px;
       position: relative;
       overflow: hidden;
       gap: 40px;
@@ -1257,8 +1258,8 @@
     }
 
     @media (max-width: 768px) {
-      #nav { padding: 16px 24px; }
-      #nav.scrolled { padding: 12px 24px; }
+      #nav { padding: calc(16px + env(safe-area-inset-top)) 24px 16px; }
+      #nav.scrolled { padding: calc(12px + env(safe-area-inset-top)) 24px 12px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .section, .story-inner, .pricing-inner, .cta-inner { padding: 80px 24px; }
